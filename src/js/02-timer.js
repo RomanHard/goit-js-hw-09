@@ -17,8 +17,14 @@ const refs = {
 };
 
 const timer = {
+  isActive: false,
   start() {
+    if (this.isActive) {
+      return;
+    }
+
     const startTime = Date.now();
+    this.isActive = true;
 
     setInterval(() => {
       const currentTime = Date.now();
