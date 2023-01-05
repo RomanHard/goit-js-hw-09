@@ -1,19 +1,22 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
-// const options = {
-//   enableTime: true,
-//   time_24hr: true,
-//   defaultDate: new Date(),
-//   minuteIncrement: 1,
-//   onClose(selectedDates) {
-//     console.log(selectedDates[0]);
-//   },
-// };
+const options = {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    console.log(selectedDates[0]);
+  },
+};
 
 const refs = {
   startBtn: document.querySelector('button[data-start]'),
-  clockface: document.querySelector('.timer'),
+  dateDays: document.querySelector('[data-days]'),
+  dataHours: document.querySelector('[data-hours]'),
+  dataMinutes: document.querySelector('[data-minutes]'),
+  dataSeconds: document.querySelector('[data-seconds]'),
 };
 
 const timer = {
@@ -42,7 +45,10 @@ refs.startBtn.addEventListener('click', () => {
 });
 
 function updateClockface({ days, hours, minutes, seconds }) {
-  refs.clockface.textContent = `${days}:${hours}:${minutes}:${seconds}`;
+  refs.dateDays.textContent = `${days}`;
+  refs.dataHours.textContent = `${hours}`;
+  refs.dataMinutes.textContent = `${minutes}`;
+  refs.dataSeconds.textContent = `${seconds}`;
 }
 
 // ------- преоборазовуємо цифри 1 = 01.  5=05.
