@@ -11,38 +11,52 @@ import 'flatpickr/dist/flatpickr.min.css';
 //   },
 // };
 
+const refs = {
+  startBtn: document.querySelector('button[data-start]'),
+  clockface: document.querySelector('.timer'),
+};
+
 const timer = {
   start() {
     const startTime = Date.now();
 
     setInterval(() => {
-      //   console.log('start -> startTime', startTime);
       const currentTime = Date.now();
       const deltaTime = currentTime - startTime;
-
-      console.log(deltaTime);
+      const { days, hours, minutes, seconds } = convertMs(deltaTime);
+      //   console.log(`${days}:${hours}:${minutes}:${seconds}`);
     }, 1000);
   },
 };
 
-timer.start();
+refs.startBtn.addEventListener('click', () => {
+  timer.start();
+});
 
-// // -------  Підрахунок мілісікунди в дні.часи.минути.секунди
-// function convertMs(ms) {
-//   ß;
-//   const second = 1000;
-//   const minute = second * 60;
-//   const hour = minute * 60;
-//   const day = hour * 24;
+function updateClockface({ days, hours, minutes, seconds }) {
+  refs.clockface.textContent = `${days}:${hours}:${minutes}:${seconds}`;
+}
+// ------- преоборазовуємо цифри 1 = 01.  5=05.
 
-//   // Remaining days
-//   const days = Math.floor(ms / day);
-//   // Remaining hours
-//   const hours = Math.floor((ms % day) / hour);
-//   // Remaining minutes
-//   const minutes = Math.floor(((ms % day) % hour) / minute);
-//   // Remaining seconds
-//   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+function pad(value) {
+  return String(value).padStart(2, '0');
+}
 
-//   return { days, hours, minutes, seconds };
-// }
+// -------  Підрахунок мілісікунди в дні.часи.минути.секунди
+function convertMs(ms) {
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  // Remaining days
+  const days = pad(Math.floor(ms / day));
+  // Remaining hours
+  const hours = pad(Math.floor((ms % day) / hour));
+  // Remaining minutes
+  const minutes = pad(Math.floor(((ms % day) % hour) / minute));
+  // Remaining seconds
+  const seconds = pad(Math.floor((((ms % day) % hour) % minute) / second));
+
+  return { days, hours, minutes, seconds };
+}
