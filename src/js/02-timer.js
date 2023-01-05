@@ -1,1 +1,1 @@
-const date = new Date().getTime();
+const date = Date.now();
