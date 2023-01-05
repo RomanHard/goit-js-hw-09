@@ -5,8 +5,6 @@ const timer = {
     setInterval(() => {
       //   console.log('start -> startTime', startTime);
       const currentTime = Date.now();
-
-      console.log(currentTime - startTime);
     }, 1000);
   },
 };
