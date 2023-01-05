@@ -25,4 +25,11 @@ img {
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding-top: 10px;
+  padding-right: 10px;
+  font-size: larger;
+}
+
+.value {
+  font-size: -webkit-xxx-large;
 }
