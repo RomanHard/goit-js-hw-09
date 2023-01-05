@@ -1,1 +1,0 @@
-{"mappings":"CAAa,IAAIA,MAAOC","sources":["src/js/02-timer.js"],"sourcesContent":["const date = new Date().getTime();\n"],"names":["Date","getTime"],"version":3,"file":"02-timer.4afb894a.js.map"}
