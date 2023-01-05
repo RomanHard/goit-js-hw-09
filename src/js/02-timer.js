@@ -30,6 +30,8 @@ const timer = {
       const currentTime = Date.now();
       const deltaTime = currentTime - startTime;
       const { days, hours, minutes, seconds } = convertMs(deltaTime);
+
+      updateClockface({ days, hours, minutes, seconds });
       //   console.log(`${days}:${hours}:${minutes}:${seconds}`);
     }, 1000);
   },
@@ -42,8 +44,8 @@ refs.startBtn.addEventListener('click', () => {
 function updateClockface({ days, hours, minutes, seconds }) {
   refs.clockface.textContent = `${days}:${hours}:${minutes}:${seconds}`;
 }
-// ------- преоборазовуємо цифри 1 = 01.  5=05.
 
+// ------- преоборазовуємо цифри 1 = 01.  5=05.
 function pad(value) {
   return String(value).padStart(2, '0');
 }
