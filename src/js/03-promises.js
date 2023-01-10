@@ -7,7 +7,7 @@ const refs = {
 
 const formInputValue = {};
 
-insudeFormInput = event => {
+const insudeFormInput = event => {
   if (event.target.name === 'delay') {
     formInputValue.delay = Number(event.target.value);
   }
