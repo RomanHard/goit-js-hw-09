@@ -27,9 +27,6 @@ const onClickSubmitBtn = e => {
     delay += formInputValue.step;
     position += 1;
     createPromise(position, delay);
-
-    // не хоче очищати форму. не можу зрозуміти чому так...(
-    // e.currentTarget.reset();
   }
 };
 
