@@ -27,6 +27,7 @@ const onClickSubmitBtn = e => {
     delay += formInputValue.step;
     position += 1;
     createPromise(position, delay);
+    refs.form.reset();
   }
 };
 
