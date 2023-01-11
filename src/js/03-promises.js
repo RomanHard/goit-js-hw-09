@@ -24,7 +24,7 @@ const onClickSubmitBtn = e => {
   let delay = formInputValue.delay;
   let position = 0;
   for (let i = 0; i < formInputValue.amount; i += 1) {
-    delay += formInputValue.step;
+    if (position > 0) delay += formInputValue.step;
     position += 1;
     createPromise(position, delay);
     refs.form.reset();
